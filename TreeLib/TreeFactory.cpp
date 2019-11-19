@@ -10,7 +10,8 @@
 #include "TreeFactory.h"
 #include "Tree.h"
 #include "Basket.h"
-
+#include "TreeAdapter.h"
+#include "BasketAdapter.h"
 using namespace std;
 
 /**
@@ -35,7 +36,7 @@ CTreeFactory::~CTreeFactory()
  */
 std::shared_ptr<CTree> CTreeFactory::CreateTree()
 {
-    return make_shared<CTree>();
+    return make_shared<CTreeAdapter>();
 }
 
 
@@ -45,6 +46,6 @@ std::shared_ptr<CTree> CTreeFactory::CreateTree()
  */
 std::shared_ptr<CBasket> CTreeFactory::CreateBasket()
 {
-    return make_shared<CBasket>();
+    return make_shared<CBasketAdapter>();
 }
 
