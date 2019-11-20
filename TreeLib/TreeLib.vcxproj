@@ -113,6 +113,8 @@
     <ClCompile Include="Basket.cpp" />
     <ClCompile Include="BasketAdapter.cpp" />
     <ClCompile Include="BasketStandin.cpp" />
+    <ClCompile Include="GrowableImage.cpp" />
+    <ClCompile Include="Leaf.cpp" />
     <ClCompile Include="Limb.cpp" />
     <ClCompile Include="TreeAdapter.cpp" />
     <ClCompile Include="Growable.cpp" />
@@ -130,6 +132,8 @@
     <ClInclude Include="Basket.h" />
     <ClInclude Include="BasketAdapter.h" />
     <ClInclude Include="BasketStandin.h" />
+    <ClInclude Include="GrowableImage.h" />
+    <ClInclude Include="Leaf.h" />
     <ClInclude Include="Limb.h" />
     <ClInclude Include="TreeAdapter.h" />
     <ClInclude Include="Fruit.h" />

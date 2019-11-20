@@ -7,16 +7,17 @@
 using namespace std;
 using namespace Gdiplus;
 
+
 CTreeAdapter::CTreeAdapter() : CTree() {
+	mRandomGenerator = make_shared<CPseudoRandom>();
 
 	mTrunk = make_shared<CLimb>();
 	mTrunk->SetTree(this);
 	mTrunk->Grow();
-	mTrunk->SetLocation(mX, mY);
 }
 
 void CTreeAdapter::DrawTree(Gdiplus::Graphics* graphics)
 {
-	mTrunk->Draw(graphics, mX, mY);
+	mTrunk->Draw(graphics);
 
 }

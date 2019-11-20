@@ -3,13 +3,22 @@
 class CLimb : public CGrowable
 {
 public:
-	virtual void Draw(Gdiplus::Graphics* graphics, double treeX, double treeY);
+
+	CLimb();
+
+
+	virtual void Draw(Gdiplus::Graphics* graphics);
+
+	void CalculateEndpoint();
 
 	virtual void Grow();
 
+	virtual void SetLocation(int x, int y);
+
+	virtual void GetParentInfo();
+
 private:
 
-	double mAngle;
-
+	int mMaxSize = 100; 
 };
 

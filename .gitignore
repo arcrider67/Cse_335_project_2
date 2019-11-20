@@ -347,3 +347,5 @@ healthchecksdb
 
 # Doxywizard file
 *.doxy
+/TreeLib/RotatedBitmap.cpp
+/TreeLib/RotatedBitmap.h
