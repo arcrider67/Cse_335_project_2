@@ -3,13 +3,13 @@
 
 using namespace Gdiplus;
 
-CGrowableImage::CGrowableImage(std::wstring filename) {
+CGrowableImage::CGrowableImage(const std::wstring &filename) {
 
-	//mImage = std::make_shared<Bitmap>(Bitmap::FromFile(filename));
+	mImage = std::unique_ptr<Bitmap>(Bitmap::FromFile(filename.c_str()));
 
 }
 
 void CGrowableImage::Draw(Gdiplus::Graphics* graphics, double angle, double scale, double x, double y)
 {
-	//graphics->DrawImage(mImage);
+	//graphics->DrawImage(mImage, x, y);
 }

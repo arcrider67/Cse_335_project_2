@@ -8,7 +8,7 @@ class CGrowableImage :
 public:
 
 public:
-	CGrowableImage(const std::wstring name);
+	CGrowableImage(const std::wstring &name);
 
 	/// Default constructor/disabled
 	CGrowableImage() = delete;
