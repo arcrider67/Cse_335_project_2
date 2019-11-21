@@ -3,6 +3,7 @@
 #include "TreeAdapter.h"
 #include "Leaf.h"
 #include "Limb.h"
+#include "FruitAdapter.h"
 #include <cmath>
 
 
@@ -16,6 +17,7 @@ CGrowable::CGrowable(){
 
 void CGrowable::Draw(Gdiplus::Graphics* graphics)
 {
+	CalculateWind();
 	for (auto child : mChildren) {
 		child->Draw(graphics);
 	}
@@ -45,8 +47,8 @@ double CGrowable::CalcOpposite(double hypo) {
 
 
 void CGrowable::GenerateAngle() {
-	mAngle = mParent->GetAngle() + mHostTree->Random(-45, 45);
-	
+	mAngle = mParent->GetAngle() + mHostTree->Random(-60, 60);
+	mBaseAngle = mAngle;
 }
 
 void CGrowable::Grow() {
@@ -65,25 +67,40 @@ void CGrowable::Grow() {
 		AddChild(limb2);
 		limb2->GetParentInfo();
 
-
-
 		limb->Grow();
 		limb2->Grow();
 	}
-	else if (mDepth > 3 && mHostTree->Random(0.0,1.0) > 0.7) {
-		auto leaf = make_shared<CLeaf>();
-		AddChild(leaf);
-		leaf->GetParentInfo();
+	else if (mDepth < 8){
+
+		if (mHostTree->Random(0.0, 1.0) > 0.7) {
+			auto leaf = make_shared<CLeaf>();
+			AddChild(leaf);
+			leaf->GetParentInfo();
 
 
-	}
-	else {
-		auto limb = make_shared<CLimb>(); 
-		limb->SetTree(mHostTree);
-		AddChild(limb);
-		limb->GetParentInfo();
+		}
+		else {
+			auto limb = make_shared<CLimb>();
+			limb->SetTree(mHostTree);
+			AddChild(limb);
+			limb->GetParentInfo();
+			limb->Grow();
+			}
+		
+		if (mHostTree->Random(0.0, 1.0) > 0.5) {
+			auto fruit = make_shared<CFruitAdapter>();
+			AddChild(fruit);
+			fruit->GetParentInfo();
+			fruit->SetSelf(fruit);
 
-		limb->Grow();
+		}
+		else {
+			auto limb = make_shared<CLimb>();
+			limb->SetTree(mHostTree);
+			AddChild(limb);
+			limb->GetParentInfo();
+			limb->Grow();
+		}
 	}
 }
 
@@ -97,9 +114,25 @@ void CGrowable::GrowChildren() {
 
 void CGrowable::GetParentInfo()
 {
+	mHostTree = mParent->GetTree();
 	mX = mParent->GetEndpoint().X;
 	mY = mParent->GetEndpoint().Y;
 	SetStartFrame(mParent->GetStartFrame() + mParent->GetFrameAge());
 	mEndpoint = mParent->GetEndpoint();
+	GenerateAngle();
+	mDepth = mParent->GetDepth() + 1;
 
+}
+
+void CGrowable::Accept(CGrowableVisitor* visitor)
+{
+	for (auto child : mChildren) {
+		child->Accept(visitor);
+	}
+
+}
+
+void CGrowable::CalculateWind()
+{
+	mAngle = mBaseAngle + mHostTree->GetWindSpeed() * mDepth;
 }

@@ -25,8 +25,18 @@ public:
 
 	double Random(int fm, int to) { return mRandomGenerator->Random(fm, to); }
 
+	std::shared_ptr<Gdiplus::Bitmap> GetLeafImage() { return mLeafImage; }
+	std::shared_ptr<Gdiplus::Bitmap> GetFruitImage() { return mFruitImage; }
+
+	virtual std::vector<std::shared_ptr<CFruit>> Harvest();
+
+	virtual void SetWindSpeed(double speed) { mWindSpeed = speed; };
+	virtual double GetWindSpeed() { return mWindSpeed; };
+
 
 private:
+
+	double mWindSpeed = 0;
 
 	int mSeed;
 
@@ -38,5 +48,11 @@ private:
 	int mY = 550;     ///< Tree Y location
 
 	std::shared_ptr<CPseudoRandom> mRandomGenerator;
+
+	std::shared_ptr<Gdiplus::Bitmap> mLeafImage;
+
+	std::shared_ptr<Gdiplus::Bitmap> mFruitImage;
+
+
 };
 

@@ -1,22 +1,37 @@
 #include "pch.h"
 #include "GrowableImage.h"
+#include "TreeAdapter.h"
 
 using namespace Gdiplus;
 
-CGrowableImage::CGrowableImage(const std::wstring &filename) {
+const double RtoD = 0.0174533;
 
-	mImage = std::unique_ptr<Bitmap>(Bitmap::FromFile(filename.c_str()));
+CGrowableImage::CGrowableImage(const std::wstring &filename) : CGrowable() {
 
 }
 
-void CGrowableImage::Draw(Gdiplus::Graphics* graphics, double angle, double scale, double x, double y)
+void CGrowableImage::Draw(Gdiplus::Graphics* graphics)
 {
-	auto state = graphics->Save();
-    graphics->TranslateTransform((float)x, (float)y);
-    graphics->RotateTransform((float)(angle * RtoD));
-    graphics->ScaleTransform((float)scale, (float)scale);
-    graphics->DrawImage(mImage.get(), -(int)mImage->GetWidth() / 2,
-        -(int)mImage->GetHeight(),
-        mImage->GetWidth(), mImage->GetHeight());
-    graphics->Restore(state);
+	double angle = GetAngle();
+
+	CTreeAdapter* tree = GetTree();
+
+
+	double x = GetEndpoint().X;
+	double y = GetEndpoint().Y;
+
+	double scale = GetGrowthFactor() * mImageScale;
+
+	if (scale > 0) {
+		auto state = graphics->Save();
+		graphics->TranslateTransform((float)x, (float)y);
+		graphics->RotateTransform((float)(angle));
+		graphics->ScaleTransform((float)scale, (float)scale);
+		graphics->DrawImage(mImage.get(), -(int)mImage->GetWidth() / 2,
+			-(int)mImage->GetHeight(),
+			mImage->GetWidth(), mImage->GetHeight());
+		graphics->Restore(state);
+	}
 }
+
+

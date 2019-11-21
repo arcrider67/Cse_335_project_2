@@ -1,6 +1,7 @@
 #pragma once
 
 #include "pch.h"
+#include "GrowableVisitor.h"
 #include <vector>
 #include <memory>
 
@@ -56,11 +57,24 @@ public:
 
 	CGrowable* GetParent() { return mParent; }
 
+	CTreeAdapter* GetTree() { return mHostTree; }
 
 	Gdiplus::Point GetEndpoint() { return mEndpoint; }
 	void SetEndpoint(Gdiplus::Point point) { mEndpoint = point; }
 
+	float GetGrowthFactor() { return mGrownFactor; }
+
 	virtual void GetParentInfo();
+
+	double GetX(){return mX;}
+	double GetY(){return mY;}
+
+
+	/** Accept a visitor
+ * \param visitor The visitor we accept */
+	virtual void Accept(CGrowableVisitor* visitor);
+
+	virtual void CalculateWind();
 
 private:
 
@@ -68,6 +82,7 @@ private:
 
 	///angle from verticle
 	double mAngle = 0;
+	double mBaseAngle = 0;
 
 	Gdiplus::Point mEndpoint;
 
@@ -88,6 +103,6 @@ protected:
 	std::vector<std::shared_ptr<CGrowable>> mChildren;
 	CGrowable* mParent = nullptr;
 
-	CTreeAdapter* mHostTree;
+	CTreeAdapter* mHostTree = nullptr;
 };
 

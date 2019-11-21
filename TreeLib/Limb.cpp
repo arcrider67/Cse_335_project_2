@@ -22,7 +22,7 @@ void CLimb::Draw(Gdiplus::Graphics* graphics) {
 
 	CalcGrownFactor();
 	CalculateEndpoint();
-	Pen pen(Color(139, 69, 19), (REAL)5 * mGrownFactor);
+	Pen pen(Color(139, 69, 19), ((REAL)10 * mGrownFactor) / (REAL)(1+GetDepth()));
 	pen.SetEndCap(LineCapRound);
 	graphics->DrawLine(&pen, (REAL)(mX + treeX), (REAL)(treeY - mY) , (REAL)(treeX + GetEndpoint().X ), (REAL)(treeY - GetEndpoint().Y));
 	
@@ -57,8 +57,20 @@ void CLimb::GetParentInfo()
 	CLimb::SetLocation(parent->GetEndpoint().X, parent->GetEndpoint().Y);
 	SetStartFrame(parent->GetStartFrame() + parent->GetFrameAge());
 	GenerateAngle();
+	
+	mMaxSize = mMaxSize / GetDepth();
 
+}
 
+void CLimb::CalculateWind()
+{
+	CGrowable::CalculateWind();
+	CalculateEndpoint();
+
+	for (auto child : mChildren)
+	{
+		child->SetLocation(GetEndpoint().X, GetEndpoint().Y);
+	}
 }
 
 

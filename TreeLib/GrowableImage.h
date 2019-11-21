@@ -19,10 +19,16 @@ public:
 	/// Destructor
 	virtual ~CGrowableImage() {}
 
-	void CGrowableImage::Draw(Gdiplus::Graphics* graphics, double angle, double scale, double x, double y);
+	virtual void Draw(Gdiplus::Graphics* graphics);
+
+	void SetScale(double scale) { mImageScale = scale; }
+
+	void SetImage(std::shared_ptr<Gdiplus::Bitmap> image) { mImage = image; }
 
 private:
 	std::shared_ptr<Gdiplus::Bitmap> mImage; ///< The part image
+
+	double mImageScale = 1; 
 
 };
 

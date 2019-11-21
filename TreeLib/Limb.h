@@ -17,6 +17,10 @@ public:
 
 	virtual void GetParentInfo();
 
+	int GetMaxSize() { return mMaxSize; }
+
+	virtual void CalculateWind();
+
 private:
 
 	int mMaxSize = 100; 
