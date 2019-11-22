@@ -33,12 +33,20 @@ public:
 	virtual void SetWindSpeed(double speed) { mWindSpeed = speed; };
 	virtual double GetWindSpeed() { return mWindSpeed; };
 
+	void SetStartFrame(int frame) { mStartFrame = frame; }
+
+	virtual void SetSeed(int seed);
+
+	virtual int GetSeed() { return mSeed; }
+
+	virtual void SetRootLocation(int x, int y) { mX = x, mY = y; }
+
 
 private:
 
 	double mWindSpeed = 0;
 
-	int mSeed;
+	int mSeed = 0;
 
 	int mFrame = 0; ///< Current frame
 
@@ -52,6 +60,9 @@ private:
 	std::shared_ptr<Gdiplus::Bitmap> mLeafImage;
 
 	std::shared_ptr<Gdiplus::Bitmap> mFruitImage;
+
+	int mStartFrame = 20;
+
 
 
 };

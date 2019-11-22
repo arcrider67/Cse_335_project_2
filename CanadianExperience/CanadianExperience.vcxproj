@@ -113,6 +113,7 @@
     <ClInclude Include="AnimChannel.h" />
     <ClInclude Include="AnimChannelAngle.h" />
     <ClInclude Include="AnimChannelPoint.h" />
+    <ClInclude Include="BasketDrawable.h" />
     <ClInclude Include="CanadianExperience.h" />
     <ClInclude Include="Drawable.h" />
     <ClInclude Include="HaroldFactory.h" />
@@ -131,6 +132,8 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Timeline.h" />
     <ClInclude Include="TimelineDlg.h" />
+    <ClInclude Include="TreeDlg.h" />
+    <ClInclude Include="TreeDrawable.h" />
     <ClInclude Include="ViewEdit.h" />
     <ClInclude Include="ViewTimeline.h" />
     <ClInclude Include="XmlNode.h" />
@@ -141,6 +144,7 @@
     <ClCompile Include="AnimChannel.cpp" />
     <ClCompile Include="AnimChannelAngle.cpp" />
     <ClCompile Include="AnimChannelPoint.cpp" />
+    <ClCompile Include="BasketDrawable.cpp" />
     <ClCompile Include="CanadianExperience.cpp" />
     <ClCompile Include="Drawable.cpp" />
     <ClCompile Include="HaroldFactory.cpp" />
@@ -159,6 +163,8 @@
     </ClCompile>
     <ClCompile Include="Timeline.cpp" />
     <ClCompile Include="TimelineDlg.cpp" />
+    <ClCompile Include="TreeDlg.cpp" />
+    <ClCompile Include="TreeDrawable.cpp" />
     <ClCompile Include="ViewEdit.cpp" />
     <ClCompile Include="ViewTimeline.cpp" />
     <ClCompile Include="XmlNode.cpp" />

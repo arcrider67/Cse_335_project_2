@@ -80,6 +80,7 @@ public:
     afx_msg void OnEditRotate();
     afx_msg void OnUpdateEditRotate(CCmdUI *pCmdUI);
     afx_msg void OnEditTimelineproperties();
+	afx_msg void OnEditTreeproperties();
 };
 
 

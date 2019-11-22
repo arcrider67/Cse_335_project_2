@@ -119,6 +119,7 @@ BEGIN
         MENUITEM "&Delete Keyframe",            ID_EDIT_DELETEKEYFRAME
         MENUITEM SEPARATOR
         MENUITEM "&Timeline Properties...",     ID_EDIT_TIMELINEPROPERTIES
+        MENUITEM "Tree Properties...",          ID_EDIT_TREEPROPERTIES
     END
     POPUP "&View"
     BEGIN
@@ -187,6 +188,19 @@ BEGIN
     EDITTEXT        IDC_FRAMERATE,97,41,40,14,ES_AUTOHSCROLL
 END
 
+IDD_TREEDLG DIALOGEX 0, 0, 167, 136
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Tree Options"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,81,94,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,25,94,50,14
+    LTEXT           "Start Frame:",IDC_STATIC,25,26,43,10
+    EDITTEXT        IDC_STARTFRAME,86,25,40,14,ES_AUTOHSCROLL
+    LTEXT           "Harvest Frame",IDC_STATIC,25,46,48,8
+    EDITTEXT        IDC_HARVEST,86,44,40,14,ES_AUTOHSCROLL
+END
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -250,8 +264,27 @@ BEGIN
         TOPMARGIN, 7
         BOTTOMMARGIN, 82
     END
+
+    IDD_TREEDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 160
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 129
+    END
 END
 #endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_TREEDLG AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
 
 
 /////////////////////////////////////////////////////////////////////////////

@@ -6,8 +6,8 @@
 using namespace Gdiplus;
 using namespace std;
 
-const wstring backImageName = L"../images/basket.png";
-const wstring frontImageName = L"../images/basket-front.png";
+const wstring backImageName = L"images/basket.png";
+const wstring frontImageName = L"images/basket-front.png";
 
 CBasketAdapter::CBasketAdapter() {
 	mBackImage = std::unique_ptr<Bitmap>(Bitmap::FromFile(backImageName.c_str()));
@@ -42,7 +42,7 @@ void CBasketAdapter::DrawBasket(Gdiplus::Graphics* graphics)
 		fruit->DrawInBasket(graphics, x, y);
 	}
 
-	/*
+
 	state = graphics->Save();
 	graphics->TranslateTransform((float)x, (float)y);
 	graphics->ScaleTransform((float)scale, (float)scale);
@@ -50,7 +50,6 @@ void CBasketAdapter::DrawBasket(Gdiplus::Graphics* graphics)
 		-(int)mFrontImage->GetHeight(),
 		mFrontImage->GetWidth(), mFrontImage->GetHeight());
 	graphics->Restore(state);
-	*/
 }
 
 

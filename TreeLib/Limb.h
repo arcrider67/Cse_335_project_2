@@ -21,6 +21,7 @@ public:
 
 	virtual void CalculateWind();
 
+
 private:
 
 	int mMaxSize = 100; 

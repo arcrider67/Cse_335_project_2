@@ -53,4 +53,5 @@
 
 
 #include <gdiplus.h>
+#include <afxwin.h>
 #pragma comment(lib, "gdiplus.lib")

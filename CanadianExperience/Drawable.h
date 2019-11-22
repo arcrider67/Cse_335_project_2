@@ -37,6 +37,8 @@ public:
 
     virtual void SetActor(CActor *actor);
 
+	virtual CActor* GetActor() { return mActor; }
+
     /** Draw the drawable 
      * \param graphics Graphics object to draw on */
     virtual void Draw(Gdiplus::Graphics *graphics) = 0;
@@ -55,7 +57,7 @@ public:
 
     /** Set the drawable position
      * \param pos The new drawable position*/
-    void SetPosition(Gdiplus::Point pos) { mPosition = pos; }
+    virtual void SetPosition(Gdiplus::Point pos) { mPosition = pos; }
 
     /** Get the drawable position
      * \returns The drawable position*/

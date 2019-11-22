@@ -121,6 +121,10 @@ void CPicture::Save(const std::wstring &filename)
     // It is possible to add attributes to the root node here
     //
     //root->SetAttribute(L"something", mSomething);
+	root->SetAttribute(L"Seed", 1);
+
+
+
 
     try
     {

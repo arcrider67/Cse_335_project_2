@@ -10,6 +10,10 @@
 #include "SpartyFactory.h"
 #include "ImageDrawable.h"
 
+#include "TreeDrawable.h"
+#include "TreeFactory.h"
+#include "BasketDrawable.h"
+
 using namespace std;
 using namespace Gdiplus;
 
@@ -39,7 +43,24 @@ std::shared_ptr<CPicture> CPictureFactory::Create()
     background->SetRoot(backgroundI);
     picture->AddActor(background);
 
-    // Create and add Harold
+	//create basket
+	auto basketActor = std::make_shared<CActor>(L"BasketActor");
+	auto basketDrawable = std::make_shared<CBasketDrawable>(L"Basket");
+
+	
+	basketActor->AddDrawable(basketDrawable);
+	basketDrawable->SetPosition(Point(300, 550));
+
+	//create First tree
+	auto tree = std::make_shared<CActor>(L"TreeActor");
+	auto treeDrawable = std::make_shared<CTreeDrawable>(L"Tree");
+
+	picture->AddActor(tree);
+	tree->AddDrawable(treeDrawable);
+	treeDrawable->SetPosition(Point(100, 550));
+	treeDrawable->SetBasket(basketDrawable);
+
+	// Create and add Harold
     CHaroldFactory factory;
     auto harold = factory.Create();
 
@@ -55,5 +76,22 @@ std::shared_ptr<CPicture> CPictureFactory::Create()
     sparty->SetPosition(Point(200, 500));
     picture->AddActor(sparty);
 
-    return picture;
+
+
+
+	///create second tree
+	tree = std::make_shared<CActor>(L"TreeActor");
+	treeDrawable = std::make_shared<CTreeDrawable>(L"Tree");
+
+	picture->AddActor(tree);
+	tree->AddDrawable(treeDrawable);
+	treeDrawable->SetPosition(Point(600, 550));
+	treeDrawable->SetBasket(basketDrawable);
+
+
+
+
+	picture->AddActor(basketActor);
+	
+	return picture;
 }

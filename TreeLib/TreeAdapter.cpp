@@ -9,8 +9,8 @@ using namespace std;
 using namespace Gdiplus;
 
 
-const wstring leafFilename = L"../images/leaf.png";
-const wstring fruitFilename = L"../images/apple.png";
+const wstring leafFilename = L"images/leaf.png";
+const wstring fruitFilename = L"images/apple.png";
 
 CTreeAdapter::CTreeAdapter() : CTree() {
 	mRandomGenerator = make_shared<CPseudoRandom>();
@@ -20,6 +20,7 @@ CTreeAdapter::CTreeAdapter() : CTree() {
 
 	mTrunk = make_shared<CLimb>();
 	mTrunk->SetTree(this);
+	mTrunk->SetStartFrame(mStartFrame);
 	mTrunk->Grow();
 }
 
@@ -35,4 +36,11 @@ std::vector<std::shared_ptr<CFruit>> CTreeAdapter::Harvest() {
 	mTrunk->Accept(&harvester);
 	auto fruits  = harvester.getFruits();
 	return fruits;
+}
+
+void CTreeAdapter::SetSeed(int seed) {
+
+	mSeed = seed;
+	mTrunk->ClearChildren();
+	mTrunk->Grow();
 }

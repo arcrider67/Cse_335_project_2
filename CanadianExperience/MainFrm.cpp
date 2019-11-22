@@ -13,6 +13,7 @@
 #include "Picture.h"
 #include "PictureFactory.h"
 #include "TimelineDlg.h"
+#include "TreeDlg.h"
 
 
 using namespace std;
@@ -35,6 +36,7 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWndEx)
     ON_COMMAND(ID_EDIT_ROTATE, &CMainFrame::OnEditRotate)
     ON_UPDATE_COMMAND_UI(ID_EDIT_ROTATE, &CMainFrame::OnUpdateEditRotate)
     ON_COMMAND(ID_EDIT_TIMELINEPROPERTIES, &CMainFrame::OnEditTimelineproperties)
+	ON_COMMAND(ID_EDIT_TREEPROPERTIES, &CMainFrame::OnEditTreeproperties)
 END_MESSAGE_MAP()
 
 static UINT indicators[] =
@@ -265,4 +267,13 @@ void CMainFrame::OnEditTimelineproperties()
         dlg.Take();
         mPicture->UpdateObservers();
     }
+}
+
+void CMainFrame::OnEditTreeproperties()
+{
+	CTreeDlg dlg;
+	if (dlg.DoModal() == IDOK)
+	{
+
+	}
 }

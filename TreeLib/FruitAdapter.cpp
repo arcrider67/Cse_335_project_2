@@ -6,7 +6,7 @@
 using namespace Gdiplus;
 using namespace std;
 
-const wstring imageName = L"apple.png";
+const wstring imageName = L"images/apple.png";
 const double imageScale = 0.5;
 
 CFruitAdapter::CFruitAdapter() : CGrowableImage(imageName) {
@@ -25,7 +25,6 @@ void CFruitAdapter::DrawInBasket(Gdiplus::Graphics* graphics, int x, int y)
 	SetEndpoint(point);
 	SetImage(GetTree()->GetFruitImage());
 	
-	CalcGrownFactor();
 	CGrowableImage::Draw(graphics);
 }
 

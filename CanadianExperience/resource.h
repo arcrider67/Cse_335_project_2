@@ -12,10 +12,15 @@
 #define IDB_BITMAP1                     311
 #define IDB_HAROLD                      311
 #define IDD_TIMELINEDLG                 312
+#define IDD_DIALOG1                     314
+#define IDD_TREEDLG                     314
 #define IDC_NUMFRAMES                   1000
 #define IDC_EDIT2                       1001
 #define IDC_FRAMERATE                   1001
+#define IDC_HARVEST                     1001
 #define IDC_EDIT3                       1003
+#define IDC_SEED                        1004
+#define IDC_STARTFRAME                  1004
 #define ID_FILE_TEST                    32771
 #define ID_EDIT_MOVE                    32772
 #define ID_EDIT_ROTATE                  32773
@@ -28,14 +33,15 @@
 #define ID_PLAY_PLAY                    32783
 #define ID_PLAY_PLAYFROMBEGINNING       32784
 #define ID_PLAY_STOP                    32785
+#define ID_EDIT_TREEPROPERTIES          32789
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        314
-#define _APS_NEXT_COMMAND_VALUE         32789
-#define _APS_NEXT_CONTROL_VALUE         1004
+#define _APS_NEXT_RESOURCE_VALUE        316
+#define _APS_NEXT_COMMAND_VALUE         32790
+#define _APS_NEXT_CONTROL_VALUE         1005
 #define _APS_NEXT_SYMED_VALUE           310
 #endif
 #endif

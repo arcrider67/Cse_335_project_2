@@ -70,6 +70,8 @@ public:
 	double GetY(){return mY;}
 
 
+	virtual void ClearChildren() { mChildren.clear(); }
+
 	/** Accept a visitor
  * \param visitor The visitor we accept */
 	virtual void Accept(CGrowableVisitor* visitor);

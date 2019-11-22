@@ -87,7 +87,7 @@ void CGrowable::Grow() {
 			limb->Grow();
 			}
 		
-		if (mHostTree->Random(0.0, 1.0) > 0.5) {
+		if (mHostTree->Random(0.0, 1.0) > 0.7) {
 			auto fruit = make_shared<CFruitAdapter>();
 			AddChild(fruit);
 			fruit->GetParentInfo();
